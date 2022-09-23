@@ -4,6 +4,7 @@ var rows;
 var i = 0;
 var text;
 var emailIndex;
+var subject;
 var autoFill1;
 var autoFill2;
 var autoFill3;
@@ -24,15 +25,19 @@ function UpdateInfo() {
   text = document.getElementById("template").value;
   if (autoFill1.length != 0) {
     text = text.replaceAll("data1", excelData[i][autoFill1]);
+    subject = subject.replaceAll("data1", excelData[i][autoFill1]);
   }
   if (autoFill2.length != 0) {
     text = text.replaceAll("data2", excelData[i][autoFill2]);
+    subject = subject.replaceAll("data2", excelData[i][autoFill2]);
   }
   if (autoFill3.length != 0) {
     text = text.replaceAll("data3", excelData[i][autoFill3]);
+    subject = subject.replaceAll("data3", excelData[i][autoFill3]);
   }
   if (autoFill4.length != 0) {
     text = text.replaceAll("data4", excelData[i][autoFill4]);
+    subject = subject.replaceAll("data4", excelData[i][autoFill4]);
   }
   document.getElementById("preview").value = text;
 }
@@ -53,7 +58,7 @@ function GetPreviousInfo() {
 
 function SendEmail() {
   emailIndex = document.getElementById("email").value;
-  var subject = document.getElementById("subject").value;
+  subject = document.getElementById("subject").value;
   if (emailIndex != "") {
     UpdateInfo();
   }
