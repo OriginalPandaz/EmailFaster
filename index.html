@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Welcome to EmailFaster</h1>
+    <span>
+        Column for Data 1
+    </span>
+    <input type="number" id="autoFill1" placeholder="-"></input>
+    <span>
+        Column for Data 2
+    </span>
+    <input type="number" id="autoFill2" placeholder="-"></input>
+    <span>
+        Column for Data 3
+    </span>
+    <input type="number" id="autoFill3" placeholder="-"></input>
+    <span>
+        Column for Data 4
+    </span>
+    <input type="number" id="autoFill4" placeholder="-"></input>
+    <span>
+        Column for Data 5
+    </span>
+    <input type="number" id="autoFill5" placeholder="-"></input>
+    <br />
+    <br />
+    <input type="text" id="subject" size="50" placeholder="Subject"></input>
+    <br />
+    <br />
+    <input type="file" id="data"></input>
+    <br /><br />
+    <button type="button" onclick="GetPreviousInfo()">Previous Email</button>
+    <button type="button" onclick="GetNextInfo()">Next Email</button>
+    <button type="button" onclick="UpdateInfo()">Preview Email</button> 
+    <br />
+    <p>To automatically fill template with data use the keywords; ex: data1, data2, data3, data4</p>
+    <textarea rows="40" cols="80" id="template" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Enter template here"></textarea>
+    <textarea readonly rows="40" cols="80" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Email Preview"></textarea>
+    <script src="emailer.js">
+    </script> 
+</body>
+</html>
