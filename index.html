@@ -11,6 +11,23 @@
 <body>
     <h1 style="text-align: center;">Welcome to EmailFaster</h1>
     <span>
+        Keyword for Data 1
+    </span>
+    <input type="text" id="keyword1" placeholder="First Name"></input>
+    <span>
+        Keyword for Data 2
+    </span>
+    <input type="text" id="keyword2" placeholder="Last Name"></input>
+    <span>
+        Keyword for Data 3
+    </span>
+    <input type="text" id="keyword3" placeholder="Address"></input>
+    <span>
+        Keyword for Data 4
+    </span>
+    <input type="text" id="keyword4" placeholder="Phone Number"></input>
+    <br />
+    <span>
         Column for Email
     </span>
     <input type="number" id="email" placeholder="-"></input>
@@ -42,9 +59,17 @@
     <button type="button" onclick="UpdateInfo()">Preview Email</button> 
     <button type="button" onclick="SendEmail()">Send Email</button> 
     <br />
-    <p>To automatically fill template with data use the keywords; ex: data1, data2, data3, data4</p>
+    <p>To automatically fill template with data use the keywords; ex: {First Name}, {Last Name}, {Address}</p>
     <textarea rows="40" cols="80" id="template" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Enter template here"></textarea>
-    <textarea readonly rows="40" cols="80" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Email Preview"></textarea>
+    <textarea readonly rows="40" cols="80" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" 
+    placeholder="Email Preview Example
+
+Hello {First Name},
+
+We are here to inform you about something...
+
+Sincerely,
+{Owner}."></textarea>
     <script src="emailer.js">
     </script> 
 </body>
