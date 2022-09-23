@@ -57,7 +57,6 @@ function SendEmail() {
   var subject = document.getElementById("subject").value;
   UpdateInfo();
   console.log(text);
-  window.target = "_blank";
   window.open(
     "mailto:" +
       excelData[i][emailIndex] +
