@@ -3,19 +3,20 @@ var excelData;
 var rows;
 var i = 0;
 var text;
+var emailIndex;
 var autoFill1;
 var autoFill2;
 var autoFill3;
 var autoFill4;
 
 //Grab data from excel file
-input.addEventListener("change", function () { 
+input.addEventListener("change", function () {
   readXlsxFile(input.files[0]).then(function (data) {
     excelData = data;
   });
 });
 
-function UpdateInfo() { 
+function UpdateInfo() {
   autoFill1 = document.getElementById("autoFill1").value;
   autoFill2 = document.getElementById("autoFill2").value;
   autoFill3 = document.getElementById("autoFill3").value;
@@ -33,6 +34,7 @@ function UpdateInfo() {
   if (autoFill4.length != 0) {
     text = text.replaceAll("data4", excelData[i][autoFill4]);
   }
+  console.log(text);
   document.getElementById("preview").value = text;
 }
 
@@ -48,4 +50,21 @@ function GetPreviousInfo() {
     i--;
     UpdateInfo();
   }
+}
+
+function SendEmail() {
+  emailIndex = document.getElementById("email").value;
+  var subject = document.getElementById("subject").value;
+  UpdateInfo();
+  console.log(text);
+  window.target = "_blank";
+  window.open(
+    "mailto:" +
+      excelData[i][emailIndex] +
+      "?subject=" +
+      subject +
+      "&body=" +
+      encodeURIComponent(text),
+    "_blank"
+  );
 }
