@@ -34,12 +34,11 @@ function UpdateInfo() {
   if (autoFill4.length != 0) {
     text = text.replaceAll("data4", excelData[i][autoFill4]);
   }
-  console.log(text);
   document.getElementById("preview").value = text;
 }
 
 function GetNextInfo() {
-  if (excelData != undefined && i < excelData.length) {
+  if (excelData != undefined && i + 1 != excelData.length) {
     i++;
     UpdateInfo();
   }
@@ -55,15 +54,18 @@ function GetPreviousInfo() {
 function SendEmail() {
   emailIndex = document.getElementById("email").value;
   var subject = document.getElementById("subject").value;
-  UpdateInfo();
-  console.log(text);
-  window.open(
-    "mailto:" +
-      excelData[i][emailIndex] +
-      "?subject=" +
-      subject +
-      "&body=" +
-      encodeURIComponent(text),
-    "_blank"
-  );
+  if (emailIndex != "") {
+    UpdateInfo();
+  }
+  if (excelData != undefined) {
+    window.open(
+      "mailto:" +
+        excelData[i][emailIndex] +
+        "?subject=" +
+        subject +
+        "&body=" +
+        encodeURIComponent(text),
+      "_blank"
+    );
+  }
 }
