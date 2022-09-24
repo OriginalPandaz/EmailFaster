@@ -6,6 +6,7 @@ var i = 1;
 var text;
 var emailIndex;
 var subject;
+var email;
 var keyword1;
 var keyword2;
 var keyword3;
@@ -28,17 +29,27 @@ input.addEventListener("change", function () {
   });
 });
 
-function UpdateInfo() {
+function GetValues() {
+  email = document.getElementById("email").value;
   keyword1 = document.getElementById("option1").value;
   keyword2 = document.getElementById("option2").value;
   keyword3 = document.getElementById("option3").value;
   keyword4 = document.getElementById("option4").value;
+  emailIndex = document.getElementById("email").selectedIndex - 1;
   selectedOption1 = document.getElementById("option1").selectedIndex - 1;
   selectedOption2 = document.getElementById("option2").selectedIndex - 1;
   selectedOption3 = document.getElementById("option3").selectedIndex - 1;
   selectedOption4 = document.getElementById("option4").selectedIndex - 1;
   text = document.getElementById("template").value;
   subject = document.getElementById("subject").value;
+}
+
+function UpdateInfo() {
+  GetValues();
+  if (email != "None") {
+    text = text.replaceAll("{" + email + "}", excelData[i][emailIndex]);
+    subject = subject.replaceAll("{" + email + "}", excelData[i][emailIndex]);
+  }
   if (keyword1 != "None") {
     text = text.replaceAll("{" + keyword1 + "}", excelData[i][selectedOption1]);
     subject = subject.replaceAll(
@@ -85,9 +96,8 @@ function GetPreviousInfo() {
 }
 
 function SendEmail() {
-  emailIndex = document.getElementById("email").selectedIndex - 1;
+  UpdateInfo();
   if (emailIndex != -1 && excelData != undefined) {
-    UpdateInfo();
     window.open(
       "mailto:" +
         excelData[i][emailIndex] +
