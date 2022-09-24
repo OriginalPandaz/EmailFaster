@@ -10,43 +10,36 @@
 </head>
 <body>
     <h1 style="text-align: center;">Welcome to EmailFaster</h1>
-    <span>
-        Keyword for Data 1
-    </span>
-    <input type="text" id="keyword1" placeholder="First Name"></input>
-    <span>
-        Keyword for Data 2
-    </span>
-    <input type="text" id="keyword2" placeholder="Last Name"></input>
-    <span>
-        Keyword for Data 3
-    </span>
-    <input type="text" id="keyword3" placeholder="Address"></input>
-    <span>
-        Keyword for Data 4
-    </span>
-    <input type="text" id="keyword4" placeholder="Phone Number"></input>
-    <br />
-    <span>
+    <label for="email">
         Column for Email
-    </span>
-    <input type="number" id="email" placeholder="-"></input>
-    <span>
+    </label>
+    <select id="email" name="email">
+        <option value="None">None</option>
+    </select>
+    <label for="option1">
         Column for Data 1
-    </span>
-    <input type="number" id="autoFill1" placeholder="-"></input>
-    <span>
+    </label>
+    <select id="option1" name="option1">
+        <option value="None">None</option>
+    </select>
+    <label for="option2">
         Column for Data 2
-    </span>
-    <input type="number" id="autoFill2" placeholder="-"></input>
-    <span>
+    </label>
+    <select id="option2" name="option2">
+        <option value="None">None</option>
+    </select>
+    <label for="option3">
         Column for Data 3
-    </span>
-    <input type="number" id="autoFill3" placeholder="-"></input>
-    <span>
+    </label>
+    <select id="option3" name="option3">
+        <option value="None">None</option>
+    </select>
+    <label for="option4">
         Column for Data 4
-    </span>
-    <input type="number" id="autoFill4" placeholder="-"></input>
+    </label>
+    <select id="option4" name="option4">
+        <option value="None">None</option>
+    </select>
     <br />
     <br />
     <input type="text" id="subject" size="50" placeholder="Subject"></input>
@@ -60,8 +53,8 @@
     <button type="button" onclick="SendEmail()">Send Email</button> 
     <br />
     <p>To automatically fill template with data use the keywords; ex: {First Name}, {Last Name}, {Address}</p>
-    <textarea rows="40" cols="80" id="template" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Enter template here"></textarea>
-    <textarea readonly rows="40" cols="80" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" 
+    <textarea rows="25" cols="50" id="template" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Enter template here"></textarea>
+    <textarea readonly rows="25" cols="50" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" 
     placeholder="Email Preview Example
 
 Hello {First Name},
