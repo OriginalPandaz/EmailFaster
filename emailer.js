@@ -26,6 +26,7 @@ input.addEventListener("change", function () {
     PopulationOptions("option3");
     PopulationOptions("option4");
     excelData = data;
+    UpdateRecipientCount();
   });
 });
 
@@ -46,6 +47,7 @@ function GetValues() {
 
 function UpdateInfo() {
   GetValues();
+  UpdateRecipientCount();
   if (email != "None") {
     text = text.replaceAll("{" + email + "}", excelData[i][emailIndex]);
     subject = subject.replaceAll("{" + email + "}", excelData[i][emailIndex]);
@@ -89,7 +91,7 @@ function GetNextInfo() {
 }
 
 function GetPreviousInfo() {
-  if (i > 0 && excelData != undefined) {
+  if (i > 1 && excelData != undefined) {
     i--;
     UpdateInfo();
   }
@@ -118,5 +120,12 @@ function PopulationOptions(id) {
     opt.value = headers[i];
     opt.innerHTML = headers[i];
     selection.appendChild(opt);
+  }
+}
+
+function UpdateRecipientCount() {
+  if (excelData != undefined) {
+    document.getElementById("recipient-num").innerHTML =
+      "Recipient " + i + " / " + (excelData.length - 1);
   }
 }
