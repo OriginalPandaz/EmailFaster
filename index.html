@@ -1,70 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EmailFaster</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
-</head>
-<body>
-    <h1 style="text-align: center;">Welcome to EmailFaster</h1>
-    <label for="email">
-        Email Column
-    </label>
-    <select id="email" name="email">
-        <option value="None">None</option>
-    </select>
-    <label for="option1">
-        Data Column
-    </label>
-    <select id="option1" name="option1">
-        <option value="None">None</option>
-    </select>
-    <label for="option2">
-        Data Column
-    </label>
-    <select id="option2" name="option2">
-        <option value="None">None</option>
-    </select>
-    <label for="option3">
-        Data Column
-    </label>
-    <select id="option3" name="option3">
-        <option value="None">None</option>
-    </select>
-    <label for="option4">
-        Data Column
-    </label>
-    <select id="option4" name="option4">
-        <option value="None">None</option>
-    </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="emailer.html">Send Emails</a>
+    </div>
+    <h1>Welcome to EmailFaster</h1>
+    <h2>Get Started</h2>
+    <p>
+      In order to use this application, you must set your browser's default
+      email handler.
+    </p>
+    <p>Follow this guide on how to do so:</p>
+    <a
+      target="_blank"
+      href="https://oit.williams.edu/help-guides/email/gae-set-chrome-as-email-handler/#:~:text=Open%20Default%20Programs%20by%20clicking,Click%20OK."
+      >Tutorial to set browser as email handler</a
+    >
     <br />
     <br />
-    <input type="text" id="subject" size="50" placeholder="Subject"></input>
-    <br />
-    <br />
-    <input type="file" id="data"></input>
-    <br /><br />
-    <button type="button" onclick="GetPreviousInfo()">Previous Email</button>
-    <button type="button" onclick="GetNextInfo()">Next Email</button>
-    <button type="button" onclick="UpdateInfo()">Preview Email</button> 
-    <button type="button" onclick="SendEmail()">Send Email</button> 
-    <br />
-    <p>To automatically fill template with data use the headers selected for the columns; ex: {First Name}, {Last Name}, {Address}</p>
-    <p id="recipient-num"> Recipient 0 / 0</p>
-    <textarea rows="25" cols="50" id="template" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" placeholder="Enter template here"></textarea>
-    <textarea readonly rows="25" cols="50" id="preview" style="font-family: 'Times New Roman', Times, serif; font-size: larger;" 
-    placeholder="Email Template Example
-
-Hello {First Name},
-
-We are here to inform you about something...
-
-Sincerely,
-{Owner}."></textarea>
-    <script src="emailer.js">
-    </script> 
-</body>
+    <h2>Instructions</h2>
+    <p>1. Add your excel file by clicking "Choose File".</p>
+    <p>2. Select column for email and data you want to generate</p>
+    <p>3. Add subject line for emails</p>
+    <p>
+      4. Add template and use the data column name enclosed in {} to generate
+      data in parts of the template.
+    </p>
+    <p>
+      5. Preview emails to see if they are what you want and click send email to
+      generate email
+    </p>
+    <p>
+      Once you are ready, click the
+      <b><a href="emailer.html">Send Emails</a></b> header to start sending
+      emails.
+    </p>
+  </body>
 </html>
