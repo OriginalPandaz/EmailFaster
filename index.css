@@ -1,11 +1,16 @@
 html {
   text-align: center;
   color: white;
+  margin: 0%;
+  padding: 0%;
+  height: 100%;
 }
 
 body {
   background-color: #191919;
   margin: 0px;
+  height: 100%;
+  padding: 0px;
 }
 
 h1 {
