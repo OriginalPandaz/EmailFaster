@@ -1,23 +1,63 @@
 html {
   text-align: center;
+  color: white;
 }
 
 body {
-  background-color: lightblue;
+  background-color: #191919;
   margin: 0px;
 }
 
 h1 {
-  color: blue;
+  color: white;
   font-weight: bold;
+  font-size: 50px;
 }
 
-p {
-  font-size: larger;
+h2 {
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+input {
+  background-color: #2f2f2f;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
+::-ms-input-placeholder {
+  color: white;
+}
+
+textarea {
+  background-color: #2f2f2f;
+  color: white;
+}
+
+.home-info {
+  font-size: 25px;
+}
+
+.instructions {
+  font-size: 20px;
+}
+
+.link {
+  font-size: 30px;
+  color: rgb(62, 62, 175);
 }
 
 .topnav {
-  background-color: #333;
+  background-color: #2f2f2f;
   overflow: hidden;
 }
 
@@ -36,6 +76,6 @@ p {
 }
 
 .topnav a.active {
-  background-color: #04aa6d;
+  background-color: rgb(14, 14, 14);
   color: white;
 }
