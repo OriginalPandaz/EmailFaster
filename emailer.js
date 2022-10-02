@@ -21,10 +21,7 @@ input.addEventListener("change", function () {
   readXlsxFile(input.files[0]).then(function (data) {
     headers = data[0];
     PopulationOptions("email");
-    PopulationOptions("option1");
-    PopulationOptions("option2");
-    PopulationOptions("option3");
-    PopulationOptions("option4");
+    PopulationOptions("options");
     excelData = data;
     UpdateRecipientCount();
   });
@@ -32,15 +29,7 @@ input.addEventListener("change", function () {
 
 function GetValues() {
   email = document.getElementById("email").value;
-  keyword1 = document.getElementById("option1").value;
-  keyword2 = document.getElementById("option2").value;
-  keyword3 = document.getElementById("option3").value;
-  keyword4 = document.getElementById("option4").value;
   emailIndex = document.getElementById("email").selectedIndex - 1;
-  selectedOption1 = document.getElementById("option1").selectedIndex - 1;
-  selectedOption2 = document.getElementById("option2").selectedIndex - 1;
-  selectedOption3 = document.getElementById("option3").selectedIndex - 1;
-  selectedOption4 = document.getElementById("option4").selectedIndex - 1;
   text = document.getElementById("template").value;
   subject = document.getElementById("subject").value;
 }
@@ -48,39 +37,26 @@ function GetValues() {
 function UpdateInfo() {
   GetValues();
   UpdateRecipientCount();
+  ReplaceEmailKeyword();
+  ReplaceAllCheckedBoxes();
+  document.getElementById("preview").value = text;
+}
+
+function ReplaceEmailKeyword() {
   if (email != "None") {
     text = text.replaceAll("{" + email + "}", excelData[i][emailIndex]);
     subject = subject.replaceAll("{" + email + "}", excelData[i][emailIndex]);
   }
-  if (keyword1 != "None") {
-    text = text.replaceAll("{" + keyword1 + "}", excelData[i][selectedOption1]);
-    subject = subject.replaceAll(
-      "{" + keyword1 + "}",
-      excelData[i][selectedOption1]
-    );
+}
+
+function ReplaceAllCheckedBoxes() {
+  for (var j = 0; j < headers.length; j++) {
+    if (document.getElementById(headers[j]).checked) {
+      text = text.replaceAll("{" + headers[j] + "}", excelData[i][j]);
+      subject = subject.replaceAll("{" + headers[j] + "}", excelData[i][j]);
+      console.log(text);
+    }
   }
-  if (keyword2 != "None") {
-    text = text.replaceAll("{" + keyword2 + "}", excelData[i][selectedOption2]);
-    subject = subject.replaceAll(
-      "{" + keyword2 + "}",
-      excelData[i][selectedOption2]
-    );
-  }
-  if (keyword3 != "None") {
-    text = text.replaceAll("{" + keyword3 + "}", excelData[i][selectedOption3]);
-    subject = subject.replaceAll(
-      "{" + keyword3 + "}",
-      excelData[i][selectedOption3]
-    );
-  }
-  if (keyword4 != "None") {
-    text = text.replaceAll("{" + keyword4 + "}", excelData[i][selectedOption4]);
-    subject = subject.replaceAll(
-      "{" + keyword4 + "}",
-      excelData[i][selectedOption4]
-    );
-  }
-  document.getElementById("preview").value = text;
 }
 
 function GetNextInfo() {
@@ -114,13 +90,37 @@ function SendEmail() {
 
 function PopulationOptions(id) {
   selection = document.getElementById(id);
-
   for (var i = 0; i < headers.length; i++) {
-    var opt = document.createElement("option");
-    opt.value = headers[i];
-    opt.innerHTML = headers[i];
-    selection.appendChild(opt);
+    if (id == "email") {
+      var opt = document.createElement("option");
+      opt.value = headers[i];
+      opt.innerHTML = headers[i];
+      selection.appendChild(opt);
+    } else {
+      var checkBox = CreateCheckBox(i);
+      var label = CreateLabel(i);
+      selection.appendChild(checkBox);
+      selection.appendChild(label);
+    }
   }
+}
+
+function CreateCheckBox(i) {
+  var checkBox = document.createElement("input");
+  var label = document.createElement("label");
+  checkBox.type = "checkbox";
+  checkBox.value = headers[i];
+  checkBox.innerHTML = headers[i];
+  checkBox.name = headers[i];
+  checkBox.id = headers[i];
+  return checkBox;
+}
+
+function CreateLabel(i) {
+  let label = document.createElement("label");
+  label.htmlFor = headers[i];
+  label.innerHTML = headers[i];
+  return label;
 }
 
 function UpdateRecipientCount() {
