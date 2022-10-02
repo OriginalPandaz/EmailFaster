@@ -7,14 +7,6 @@ var text;
 var emailIndex;
 var subject;
 var email;
-var keyword1;
-var keyword2;
-var keyword3;
-var keyword4;
-var selectedOption1;
-var selectedOption2;
-var selectedOption3;
-var selectedOption4;
 
 //Grab data from excel file
 input.addEventListener("change", function () {
