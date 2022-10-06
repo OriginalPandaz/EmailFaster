@@ -84,3 +84,12 @@ textarea {
   background-color: rgb(14, 14, 14);
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  textarea {
+    width: 95%;
+  }
+  .subject {
+    width: 95%;
+  }
+}
