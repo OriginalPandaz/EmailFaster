@@ -82,9 +82,17 @@ function SendEmail() {
 
 function PopulationOptions(id) {
   selection = document.getElementById(id);
-  selection.innerHTML = "";
+  while (selection.firstChild) {
+    selection.removeChild(selection.lastChild);
+  }
   for (var i = 0; i < headers.length; i++) {
     if (id == "email") {
+      if (i == 0) {
+        var opt = document.createElement("option");
+        opt.value = "None";
+        opt.innerHTML = "None";
+        selection.appendChild(opt);
+      }
       var opt = document.createElement("option");
       opt.value = headers[i];
       opt.innerHTML = headers[i];
