@@ -1,13 +1,21 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { EmailGenerator } from "./EmailGenerator";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import "./styles/App.css";
+import NewTemplate from "./components/NewTemplate";
+import EmailGenerator from "./components/EmailGenerator";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<h1>Hi</h1>} />
-      <Route path="/email-generator" element={<EmailGenerator />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/email-generator" element={<EmailGenerator />} />
+        <Route path="/create-template" element={<NewTemplate />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </>
   );
 }
 

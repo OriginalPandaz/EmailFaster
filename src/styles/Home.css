@@ -1,0 +1,48 @@
+h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+h2 {
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+input {
+  background-color: #2f2f2f;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
+::-ms-input-placeholder {
+  color: white;
+}
+
+textarea {
+  background-color: #2f2f2f;
+  color: white;
+}
+
+.home-info {
+  font-size: 25px;
+}
+
+.instructions {
+  font-size: 20px;
+}
+
+.link {
+  font-size: 30px;
+  color: rgb(62, 62, 175);
+  text-decoration: none;
+}
