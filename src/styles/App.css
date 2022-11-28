@@ -1,5 +1,4 @@
 html {
-  text-align: center;
   color: white;
   margin: 0%;
   padding: 0%;
@@ -13,10 +12,43 @@ body {
   padding: 0px;
 }
 
+label {
+  font-size: 24px;
+}
+
+input {
+  font-size: 24px;
+  border-radius: 0.3rem;
+  background-color: #2f2f2f;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.6;
+}
+
+textarea {
+  font-size: 24px;
+  border-radius: 0.3rem;
+  background-color: #2f2f2f;
+  color: white;
+}
+
+.templates-opt {
+  width: 30%;
+  margin: auto;
+}
+
 @media only screen and (max-width: 600px) {
-  textarea {
+  .create-template-btn {
     width: 95%;
   }
+
+  .templates-opt {
+    width: 95%;
+  }
+
   .subject {
     width: 95%;
   }

@@ -1,8 +1,8 @@
 import "../styles/Home.css";
 
-export default function Home() {
+export function Home() {
   return (
-    <>
+    <div className="container">
       <h1>Welcome to EmailFaster</h1>
       <h2>Get Started</h2>
       <p className="home-info">
@@ -39,6 +39,6 @@ export default function Home() {
         Once you are ready, click the send emails header to start sending
         emails.
       </p>
-    </>
+    </div>
   );
 }
