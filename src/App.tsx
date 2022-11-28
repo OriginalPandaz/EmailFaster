@@ -5,11 +5,10 @@ import "./styles/App.css";
 import { NewTemplate } from "./components/NewTemplate";
 import { EmailGenerator } from "./components/EmailGenerator";
 import { useLocalStorage } from "./components/useLocalStorage";
-import { v4 as uuidV4 } from "uuid";
 
 export type Template = {
   id: string;
-};
+} & TemplateData;
 
 export type TemplateData = {
   title: string;
@@ -18,14 +17,14 @@ export type TemplateData = {
 };
 
 function App() {
-  const [templates, setTemplates] = useLocalStorage<TemplateData[]>(
+  const [templates, setTemplates] = useLocalStorage<Template[]>(
     "TEMPLATES",
     []
   );
 
-  function onCreateTemplate({ ...data }: TemplateData) {
+  function onCreateTemplate(data: Template) {
     setTemplates((prevTemplates) => {
-      return [...prevTemplates, { ...data, id: uuidV4() }];
+      return [...prevTemplates, data];
     });
   }
 
@@ -34,7 +33,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/email-generator" element={<EmailGenerator />} />
+        <Route
+          path="/email-generator"
+          element={<EmailGenerator templates={templates} />}
+        />
         <Route
           path="/create-template"
           element={<NewTemplate onSubmit={onCreateTemplate} />}

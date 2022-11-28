@@ -1,12 +1,35 @@
-.create-template-btn {
+.form-data {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  gap: 1.5rem;
+}
+
+.header {
+  margin: 0;
+  display: inline-block;
+  font-size: 40px;
+}
+
+.create-template-btn,
+.prev-btn,
+.next-btn {
   border-radius: 0.3rem;
   font-size: 1.5rem;
+}
+
+.create-template-btn {
   background-color: #007bff;
   color: #fff;
 }
 
-.form-data {
-  text-align: center;
+.prev-btn {
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.header-btn {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
 }

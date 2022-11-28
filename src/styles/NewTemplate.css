@@ -6,15 +6,10 @@
   gap: 1rem;
 }
 
-h1 {
+.header {
   margin: 0;
   display: inline-block;
   font-size: 40px;
-}
-
-button {
-  font-size: 20px;
-  border-radius: 0.4rem;
 }
 
 .save-btn {
@@ -22,6 +17,13 @@ button {
   margin-left: auto;
   background-color: #007bff;
   color: #fff;
+  font-size: 20px;
+  border-radius: 0.4rem;
+}
+
+.cancel-btn {
+  font-size: 20px;
+  border-radius: 0.4rem;
 }
 
 .header-buttons {

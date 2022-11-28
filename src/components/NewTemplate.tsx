@@ -1,15 +1,18 @@
 import { FormEvent, useRef } from "react";
-import { TemplateData } from "../App";
+import { Template, TemplateData } from "../App";
 import "../styles/NewTemplate.css";
+import { v4 as uuidV4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 type NewTemplateProps = {
-  onSubmit: (data: TemplateData) => void;
+  onSubmit: (data: Template) => void;
 };
 
 export function NewTemplate({ onSubmit }: NewTemplateProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
+  const navigate = useNavigate();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -18,15 +21,22 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
       title: titleRef.current!.value,
       subject: subjectRef.current!.value,
       body: bodyRef.current!.value,
+      id: uuidV4(),
     });
   }
 
   return (
     <form className="new-template" onSubmit={handleSubmit}>
       <div className="header-buttons">
-        <h1>New Template</h1>
+        <h1 className="header">New Template</h1>
         <button className="save-btn">Save</button>
-        <button className="cancel-btn">Cancel</button>
+        <button
+          type="button"
+          className="cancel-btn"
+          onClick={() => navigate("..")}
+        >
+          Cancel
+        </button>
       </div>
       <label htmlFor="title">Title</label>
       <input

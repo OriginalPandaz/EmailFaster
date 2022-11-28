@@ -3,8 +3,8 @@ import "../styles/Home.css";
 export function Home() {
   return (
     <div className="container">
-      <h1>Welcome to EmailFaster</h1>
-      <h2>Get Started</h2>
+      <h1 className="h1-header">Welcome to EmailFaster</h1>
+      <h2 className="h2-header">Get Started</h2>
       <p className="home-info">
         In order to use this application, you must set your browser's default
         email handler.
@@ -17,9 +17,7 @@ export function Home() {
       >
         Tutorial to set browser as email handler
       </a>
-      <br />
-      <br />
-      <h2>Instructions</h2>
+      <h2 className="h2-header">Instructions</h2>
       <p className="home-info">
         1. Add your excel file by clicking "Choose File".
       </p>

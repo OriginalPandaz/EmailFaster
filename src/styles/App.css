@@ -16,7 +16,8 @@ label {
   font-size: 24px;
 }
 
-input {
+input,
+select {
   font-size: 24px;
   border-radius: 0.3rem;
   background-color: #2f2f2f;
@@ -35,17 +36,8 @@ textarea {
   color: white;
 }
 
-.templates-opt {
-  width: 30%;
-  margin: auto;
-}
-
 @media only screen and (max-width: 600px) {
   .create-template-btn {
-    width: 95%;
-  }
-
-  .templates-opt {
     width: 95%;
   }
 
