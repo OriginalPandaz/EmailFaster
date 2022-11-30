@@ -13,13 +13,13 @@ export default function Navbar() {
         Home
       </NavLink>
       <NavLink
-        to="/email-generator"
+        to="/EmailFaster/email-generator"
         className={({ isActive }) => (isActive ? className : undefined)}
       >
         Send Emails
       </NavLink>
       <NavLink
-        to="/create-template"
+        to="/EmailFaster/create-template"
         className={({ isActive }) => (isActive ? className : undefined)}
       >
         Create Template
