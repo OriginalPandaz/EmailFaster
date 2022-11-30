@@ -1,6 +1,7 @@
 {
   "name": "email-faster",
   "private": true,
+  "homepage": "https://OriginalPandaz.github.io",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -12,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.3",
+    "read-excel-file": "^5.5.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -19,6 +21,7 @@
     "@types/react-dom": "^18.0.8",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-react": "^2.2.0",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
   }

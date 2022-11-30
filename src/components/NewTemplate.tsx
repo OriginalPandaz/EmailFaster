@@ -61,7 +61,7 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
         id="body"
         rows={15}
         required
-        placeholder="Hello {First Name},&#10;We are here to inform you about something...&#10;Sincerely,&#10;{Owner}."
+        placeholder="Hello {First Name},&#10;We are here to inform you about something...&#10;...&#10;...&#10;...&#10;Sincerely,&#10;{Owner}."
       ></textarea>
     </form>
   );

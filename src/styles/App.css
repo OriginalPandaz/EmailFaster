@@ -17,18 +17,7 @@ label {
 }
 
 input,
-select {
-  font-size: 24px;
-  border-radius: 0.3rem;
-  background-color: #2f2f2f;
-  color: white;
-}
-
-::placeholder {
-  color: white;
-  opacity: 0.6;
-}
-
+select,
 textarea {
   font-size: 24px;
   border-radius: 0.3rem;
@@ -36,12 +25,36 @@ textarea {
   color: white;
 }
 
+.input-file {
+  width: 80%;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.6;
+}
+
+.create-template-btn,
+.prev-btn,
+.send-btn,
+.next-btn {
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+}
+
+.create-template-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
 @media only screen and (max-width: 600px) {
-  .create-template-btn {
-    width: 95%;
+  .create-template-btn,
+  .prev-btn,
+  .next-btn {
+    font-size: 1rem;
   }
 
-  .subject {
-    width: 95%;
+  .input-file {
+    width: 100%;
   }
 }

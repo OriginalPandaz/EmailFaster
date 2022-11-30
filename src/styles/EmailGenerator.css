@@ -5,29 +5,6 @@
   gap: 1.5rem;
 }
 
-.header {
-  margin: 0;
-  display: inline-block;
-  font-size: 40px;
-}
-
-.create-template-btn,
-.prev-btn,
-.next-btn {
-  border-radius: 0.3rem;
-  font-size: 1.5rem;
-}
-
-.create-template-btn {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.prev-btn {
-  margin-right: 0px;
-  margin-left: auto;
-}
-
 .header-btn {
   display: flex;
   align-items: center;

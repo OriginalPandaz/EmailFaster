@@ -6,12 +6,6 @@
   gap: 1rem;
 }
 
-.header {
-  margin: 0;
-  display: inline-block;
-  font-size: 40px;
-}
-
 .save-btn {
   margin-right: 0px;
   margin-left: auto;
