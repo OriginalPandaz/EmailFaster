@@ -101,6 +101,7 @@ export function EmailGenerator({
       (template) => template.id == templateKey
     );
     onTemplateRemoval(currTemplateIndex);
+    setTemplateButtons(false);
     bodyValue.current!.value = "";
     subjectLineRef.current!.value = "";
   }
