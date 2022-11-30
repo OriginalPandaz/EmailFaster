@@ -40,11 +40,11 @@ textarea {
 .next-btn {
   border-radius: 0.3rem;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 .create-template-btn {
   background-color: #007bff;
-  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {

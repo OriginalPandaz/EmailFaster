@@ -28,6 +28,19 @@ function App() {
     });
   }
 
+  function onTemplateRemoval(index: number) {
+    setTemplates((prevTemplates) => {
+      prevTemplates.splice(index, 1);
+      return [...prevTemplates];
+    });
+  }
+
+  function onTemplateUpdate(data: Template, index: number) {
+    const tempTemplates = [...templates];
+    tempTemplates[index] = data;
+    setTemplates(tempTemplates);
+  }
+
   return (
     <>
       <Navbar />
@@ -35,7 +48,13 @@ function App() {
         <Route path="/EmailFaster" element={<Home />} />
         <Route
           path="/EmailFaster/email-generator"
-          element={<EmailGenerator templates={templates} />}
+          element={
+            <EmailGenerator
+              templates={templates}
+              onTemplateRemoval={onTemplateRemoval}
+              onTemplateUpdate={onTemplateUpdate}
+            />
+          }
         />
         <Route
           path="/EmailFaster/create-template"

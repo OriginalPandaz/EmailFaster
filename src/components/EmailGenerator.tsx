@@ -6,12 +6,20 @@ import readXlsxFile, { Row } from "read-excel-file";
 
 type TemplateProps = {
   templates: Template[];
+  onTemplateRemoval: (index: number) => void;
+  onTemplateUpdate: (data: Template, index: number) => void;
 };
 
-export function EmailGenerator({ templates }: TemplateProps) {
+export function EmailGenerator({
+  templates,
+  onTemplateRemoval,
+  onTemplateUpdate,
+}: TemplateProps) {
   const [excelData, setExcelData] = useState<Row[]>([]);
   const [index, setIndex] = useState(1);
   const [emailIndex, setEmailIndex] = useState(-1);
+  const [templateKey, setTemplateKey] = useState("None");
+  const [hideTemplateButtons, setTemplateButtons] = useState(false);
   const subjectLineRef = useRef<HTMLInputElement>(null);
   const bodyValue = useRef<HTMLTextAreaElement>(null);
   const hasExcelData = excelData.length == 0;
@@ -32,11 +40,15 @@ export function EmailGenerator({ templates }: TemplateProps) {
       (template) => template.id === e.currentTarget.value
     );
     if (templateData != null) {
+      setTemplateKey(e.currentTarget.value);
       subjectLineRef.current!.value = templateData["subject"];
       bodyValue.current!.value = templateData["body"];
+      setTemplateButtons(true);
     } else {
+      setTemplateKey("None");
       subjectLineRef.current!.value = "";
       bodyValue.current!.value = "";
+      setTemplateButtons(false);
     }
   }
 
@@ -84,6 +96,25 @@ export function EmailGenerator({ templates }: TemplateProps) {
     );
   }
 
+  function handleTemplateDeletion() {
+    let currTemplateIndex = templates.findIndex(
+      (template) => template.id == templateKey
+    );
+    onTemplateRemoval(currTemplateIndex);
+    bodyValue.current!.value = "";
+    subjectLineRef.current!.value = "";
+  }
+
+  function handleTemplateUpdate() {
+    let currTemplateIndex = templates.findIndex(
+      (template) => template.id == templateKey
+    );
+    let currTemplate = templates.find((template) => template.id == templateKey);
+    currTemplate!.body = bodyValue.current!.value;
+    currTemplate!.subject = subjectLineRef.current!.value;
+    onTemplateUpdate(currTemplate!, currTemplateIndex);
+  }
+
   return (
     <>
       <form className="form-data">
@@ -126,7 +157,7 @@ export function EmailGenerator({ templates }: TemplateProps) {
           >
             Send Email
           </button>
-          <Link className="link-btn" to="/create-template">
+          <Link className="link-btn" to="/EmailFaster/create-template">
             <button className="create-template-btn">Create Template</button>
           </Link>
         </div>
@@ -138,24 +169,49 @@ export function EmailGenerator({ templates }: TemplateProps) {
           onChange={handleInputFile}
         ></input>
         <label htmlFor="templates">Templates</label>
-        <select
-          className="templates-opt"
-          name="templates"
-          id="templates"
-          onChange={handleAutoFill}
-        >
-          <option value="None">None</option>
-          {templates.map((template) => (
-            <option key={template.id} value={template.id}>
-              {template.title}
-            </option>
-          ))}
-          ;
-        </select>
+        <div className="select-options">
+          <select
+            className="template-opts"
+            name="templates"
+            id="templates"
+            onChange={handleAutoFill}
+            defaultValue="None"
+          >
+            <option value="None">None</option>
+            {templates.map((template) => (
+              <option key={template.id} value={template.id}>
+                {template.title}
+              </option>
+            ))}
+            ;
+          </select>
+          <button
+            type="button"
+            className="template-delete-btn"
+            onClick={handleTemplateDeletion}
+            hidden={!hideTemplateButtons}
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            className="template-update-btn"
+            onClick={handleTemplateUpdate}
+            hidden={!hideTemplateButtons}
+          >
+            Update
+          </button>
+        </div>
         <label htmlFor="subject">Subject</label>
         <input ref={subjectLineRef} type="text" placeholder="Subject Line" />
         <label htmlFor="body">Body</label>
-        <textarea ref={bodyValue} name="body" id="Body" rows={15}></textarea>
+        <textarea
+          ref={bodyValue}
+          name="body"
+          id="Body"
+          rows={15}
+          placeholder="Don't have a template?&#10;Go create a template first!"
+        ></textarea>
       </form>
     </>
   );
