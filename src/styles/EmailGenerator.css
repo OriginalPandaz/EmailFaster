@@ -1,12 +1,15 @@
 .form-data {
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  margin: 30px;
   gap: 1.5rem;
 }
 
+.email-header {
+  margin: 0;
+}
+
 .header-btn {
-  display: flex;
   align-items: center;
   gap: 0.3rem;
 }
@@ -21,7 +24,8 @@
   color: #fff;
 }
 
-.template-update-btn {
+.template-update-btn,
+.send-btn {
   background-color: #007bff;
   color: #fff;
 }

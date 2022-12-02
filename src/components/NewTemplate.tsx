@@ -27,17 +27,7 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
 
   return (
     <form className="new-template" onSubmit={handleSubmit}>
-      <div className="header-buttons">
-        <h1 className="header">New Template</h1>
-        <button className="save-btn">Save</button>
-        <button
-          type="button"
-          className="cancel-btn"
-          onClick={() => navigate("..")}
-        >
-          Cancel
-        </button>
-      </div>
+      <h1 className="new-template-header">New Template</h1>
       <label htmlFor="title">Title</label>
       <input
         ref={titleRef}
@@ -63,6 +53,16 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
         required
         placeholder="Hello {First Name},&#10;We are here to inform you about something...&#10;...&#10;...&#10;...&#10;Sincerely,&#10;{Owner}."
       ></textarea>
+      <div className="footer-buttons">
+        <button className="save-btn">Save</button>
+        <button
+          type="button"
+          className="cancel-btn"
+          onClick={() => navigate("..")}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

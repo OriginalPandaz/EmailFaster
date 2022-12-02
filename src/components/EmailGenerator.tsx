@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Template } from "../App";
 import "../styles/EmailGenerator.css";
@@ -17,12 +17,12 @@ export function EmailGenerator({
 }: TemplateProps) {
   const [excelData, setExcelData] = useState<Row[]>([]);
   const [index, setIndex] = useState(1);
-  const [emailIndex, setEmailIndex] = useState(-1);
   const [templateKey, setTemplateKey] = useState("None");
   const [hideTemplateButtons, setTemplateButtons] = useState(false);
   const subjectLineRef = useRef<HTMLInputElement>(null);
   const bodyValue = useRef<HTMLTextAreaElement>(null);
   const hasExcelData = excelData.length == 0;
+  var emailIndex = -1;
 
   function handleInputFile(e: React.FormEvent<HTMLInputElement>) {
     readXlsxFile(e.currentTarget.files![0])
@@ -53,14 +53,13 @@ export function EmailGenerator({
   }
 
   function replaceSubjectKeywords() {
-    let newSubjectLine = subjectLineRef.current!.value;
+    let newSubjectLine: string = subjectLineRef.current!.value;
 
     if (newSubjectLine == "") {
       return "";
     }
 
-    for (let i = 0; i < excelData[0].length; i++) {
-      if (`${excelData[0][i]}` == "Email") setEmailIndex(i);
+    for (let i: number = 0; i < excelData[0].length; i++) {
       newSubjectLine = newSubjectLine.replaceAll(
         `{${excelData[0][i]}}`,
         `${excelData[index][i]}`
@@ -70,13 +69,13 @@ export function EmailGenerator({
   }
 
   function replaceBodyKeyWords() {
-    let newBody = bodyValue.current!.value;
+    let newBody: string = bodyValue.current!.value;
 
     if (newBody == "") {
       return "";
     }
 
-    for (let i = 0; i < excelData[0].length; i++) {
+    for (let i: number = 0; i < excelData[0].length; i++) {
       newBody = newBody.replaceAll(
         `{${excelData[0][i]}}`,
         `${excelData[index][i]}`
@@ -86,18 +85,30 @@ export function EmailGenerator({
   }
 
   function handleEmailGeneration() {
-    let newSubjectLine = replaceSubjectKeywords();
-    let newBody = replaceBodyKeyWords();
-    window.open(
-      `mailto:${
-        excelData[index][emailIndex]
-      }?subject=${newSubjectLine}&body=${encodeURIComponent(newBody)}`,
-      "_blank"
-    );
+    let newSubjectLine: string = replaceSubjectKeywords();
+    let newBody: string = replaceBodyKeyWords();
+
+    if (emailIndex == -1) {
+      for (let i: number = 0; i < excelData[0].length; i++) {
+        if (`${excelData[0][i]}` == "Email") {
+          emailIndex = i;
+          break;
+        }
+      }
+    }
+
+    if (emailIndex != -1) {
+      window.open(
+        `mailto:${
+          excelData[index][emailIndex]
+        }?subject=${newSubjectLine}&body=${encodeURIComponent(newBody)}`,
+        "_blank"
+      );
+    }
   }
 
   function handleTemplateDeletion() {
-    let currTemplateIndex = templates.findIndex(
+    let currTemplateIndex: number = templates.findIndex(
       (template) => template.id == templateKey
     );
     onTemplateRemoval(currTemplateIndex);
@@ -107,10 +118,12 @@ export function EmailGenerator({
   }
 
   function handleTemplateUpdate() {
-    let currTemplateIndex = templates.findIndex(
+    let currTemplateIndex: number = templates.findIndex(
       (template) => template.id == templateKey
     );
-    let currTemplate = templates.find((template) => template.id == templateKey);
+    let currTemplate: Template | undefined = templates.find(
+      (template) => template.id == templateKey
+    );
     currTemplate!.body = bodyValue.current!.value;
     currTemplate!.subject = subjectLineRef.current!.value;
     onTemplateUpdate(currTemplate!, currTemplateIndex);
@@ -119,12 +132,16 @@ export function EmailGenerator({
   return (
     <>
       <form className="form-data">
-        <h1 className="header">Start off by creating a template</h1>
-        <div className="header-btn">
+        <h1 className="email-header">Start off by creating a template</h1>
+        <Link className="link-btn" to="/EmailFaster/create-template">
+          <button className="create-template-btn">Create Template</button>
+        </Link>
+        <div className="header-btn" hidden={hasExcelData}>
           <button
             type="button"
             className="prev-btn"
-            disabled={hasExcelData || index == 1}
+            hidden={hasExcelData}
+            disabled={index == 1}
             style={{
               backgroundColor:
                 hasExcelData || index == 1 ? "#191919" : "#007bff",
@@ -136,10 +153,11 @@ export function EmailGenerator({
           <button
             type="button"
             className="next-btn"
-            disabled={hasExcelData || index == excelData.length}
+            hidden={hasExcelData}
+            disabled={index == excelData.length - 1}
             style={{
               backgroundColor:
-                hasExcelData || index == excelData.length
+                hasExcelData || index == excelData.length - 1
                   ? "#191919"
                   : "#007bff",
             }}
@@ -150,17 +168,11 @@ export function EmailGenerator({
           <button
             type="button"
             className="send-btn"
-            disabled={hasExcelData}
-            style={{
-              backgroundColor: hasExcelData ? "#191919" : "#007bff",
-            }}
+            hidden={hasExcelData}
             onClick={handleEmailGeneration}
           >
             Send Email
           </button>
-          <Link className="link-btn" to="/EmailFaster/create-template">
-            <button className="create-template-btn">Create Template</button>
-          </Link>
         </div>
         <label htmlFor="input-file">Insert Excel File</label>
         <input

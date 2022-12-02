@@ -37,7 +37,9 @@ textarea {
 .create-template-btn,
 .prev-btn,
 .send-btn,
-.next-btn {
+.next-btn,
+.save-btn,
+.cancel-btn {
   border-radius: 0.3rem;
   font-size: 1.5rem;
   color: #fff;
@@ -47,14 +49,25 @@ textarea {
   background-color: #007bff;
 }
 
+.header-btn {
+  display: flex;
+}
+
 @media only screen and (max-width: 600px) {
   .create-template-btn,
   .prev-btn,
-  .next-btn {
+  .send-btn,
+  .next-btn,
+  .save-btn,
+  .cancel-btn {
     font-size: 1rem;
   }
 
   .input-file {
     width: 100%;
+  }
+
+  .header-btn {
+    display: grid;
   }
 }

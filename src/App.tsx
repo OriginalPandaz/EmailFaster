@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import "./styles/App.css";
 import { NewTemplate } from "./components/NewTemplate";
 import { EmailGenerator } from "./components/EmailGenerator";
-import { useLocalStorage } from "./components/useLocalStorage";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export type Template = {
   id: string;
