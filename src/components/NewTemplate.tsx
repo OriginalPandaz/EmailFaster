@@ -55,7 +55,7 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
       <div className="new-temp-btns">
         <button className="save-btn">Save</button>
         <button type="button" className="cancel-btn">
-          <Link to="/EmailFaster" className="return-link">
+          <Link to="/EmailFaster/" className="return-link">
             Cancel
           </Link>
         </button>
