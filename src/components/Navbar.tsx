@@ -8,29 +8,23 @@ export default function Navbar() {
   const [clicked, setClicked] = useState(false);
   console.log(clicked);
   return (
-    <div className="topnav">
+    <div className={clicked ? "topnav-resp" : "topnav"}>
       <NavLink
         end
         to="/EmailFaster"
-        className={({ isActive }) =>
-          clicked ? "responsive" : isActive ? className : undefined
-        }
+        className={({ isActive }) => (isActive ? className : undefined)}
       >
         Home
       </NavLink>
       <NavLink
         to="/EmailFaster/email-generator"
-        className={({ isActive }) =>
-          clicked ? "responsive" : isActive ? className : undefined
-        }
+        className={({ isActive }) => (isActive ? className : undefined)}
       >
         Send Emails
       </NavLink>
       <NavLink
         to="/EmailFaster/create-template"
-        className={({ isActive }) =>
-          clicked ? "responsive" : isActive ? className : undefined
-        }
+        className={({ isActive }) => (isActive ? className : undefined)}
       >
         Create Template
       </NavLink>
