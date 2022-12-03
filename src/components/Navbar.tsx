@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className={clicked ? "topnav-resp" : "topnav"}>
       <NavLink
         end
-        to="/EmailFaster"
+        to="/EmailFaster/"
         className={({ isActive }) => (isActive ? className : undefined)}
       >
         Home

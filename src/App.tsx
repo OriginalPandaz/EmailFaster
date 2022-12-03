@@ -45,7 +45,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/EmailFaster/" element={<Home />} />
         <Route
           path="/EmailFaster/email-generator"
           element={
@@ -60,7 +60,7 @@ function App() {
           path="/EmailFaster/create-template"
           element={<NewTemplate onSubmit={onCreateTemplate} />}
         />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/EmailFaster/" />} />
       </Routes>
     </>
   );
