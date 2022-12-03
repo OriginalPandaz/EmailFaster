@@ -10,19 +10,32 @@
   margin: 0;
 }
 
+.save-btn,
+.cancel-btn {
+  border-radius: 0.4rem;
+  font-size: 1.5rem;
+}
+
 .save-btn {
   margin-right: 0px;
   margin-left: auto;
   background-color: #007bff;
   color: #fff;
-  border-radius: 0.4rem;
 }
 
-.cancel-btn {
-  border-radius: 0.4rem;
+.return-link {
+  text-decoration: none;
+  color: #000;
 }
 
-.footer-buttons {
+.new-temp-btns {
   display: flex;
   gap: 0.2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .save-btn,
+  .cancel-btn {
+    font-size: 1rem;
+  }
 }

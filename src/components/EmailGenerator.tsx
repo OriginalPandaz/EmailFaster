@@ -136,7 +136,7 @@ export function EmailGenerator({
         <Link className="link-btn" to="/EmailFaster/create-template">
           <button className="create-template-btn">Create Template</button>
         </Link>
-        <div className="header-btn" hidden={hasExcelData}>
+        <div className="email-btns" hidden={hasExcelData}>
           <button
             type="button"
             className="prev-btn"

@@ -20,3 +20,43 @@
 .active-link {
   background-color: rgb(14, 14, 14);
 }
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.responsive {
+    display: flex;
+    background-color: #1b1b1b;
+    color: white;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    padding: 20px;
+    right: 0;
+  }
+
+  .topnav a.responsive:first-child {
+    top: 48px;
+  }
+
+  .topnav a.responsive:nth-child(2) {
+    top: 96px;
+  }
+
+  .topnav a.responsive:nth-child(3) {
+    top: 144px;
+  }
+
+  .topnav div.menu-icon {
+    float: right;
+    display: block;
+    padding: 14px 16px;
+    font-size: 17px;
+  }
+}

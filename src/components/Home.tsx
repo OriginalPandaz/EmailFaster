@@ -13,7 +13,7 @@ export function Home() {
       <a
         className="link"
         target="_blank"
-        href="https://oit.williams.edu/help-guides/email/gae-set-chrome-as-email-handler/#:~:text=Open%20Default%20Programs%20by%20clicking,Click%20OK."
+        href="https://oit.williams.edu/help-guides/email/gae-set-chrome-as-email-handler"
       >
         Tutorial to set browser as email handler
       </a>
@@ -22,14 +22,14 @@ export function Home() {
         1. Create a template with desired keywords for the subject line and
         body.
       </p>
-      <p className="home-info">2. Go to send emails to use template</p>
+      <p className="home-info">2. Go to send emails to use the template</p>
       <p className="home-info">3. Add excel file by clicking Choose File</p>
       <p className="home-info">
-        4. Use Prev and Next buttons to go through other email previews
+        4. Make sure one of the headers is named Email to automatically get
+        emails
       </p>
       <p className="home-info">
-        5. Preview email to see if they are what you want and click send email
-        to generate email
+        5. Click send email to preview / generate email
       </p>
     </div>
   );

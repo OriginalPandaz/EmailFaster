@@ -2,7 +2,7 @@ import { FormEvent, useRef } from "react";
 import { Template, TemplateData } from "../App";
 import "../styles/NewTemplate.css";
 import { v4 as uuidV4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type NewTemplateProps = {
   onSubmit: (data: Template) => void;
@@ -12,7 +12,6 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
-  const navigate = useNavigate();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -53,14 +52,12 @@ export function NewTemplate({ onSubmit }: NewTemplateProps) {
         required
         placeholder="Hello {First Name},&#10;We are here to inform you about something...&#10;...&#10;...&#10;...&#10;Sincerely,&#10;{Owner}."
       ></textarea>
-      <div className="footer-buttons">
+      <div className="new-temp-btns">
         <button className="save-btn">Save</button>
-        <button
-          type="button"
-          className="cancel-btn"
-          onClick={() => navigate("..")}
-        >
-          Cancel
+        <button type="button" className="cancel-btn">
+          <Link to="/EmailFaster" className="return-link">
+            Cancel
+          </Link>
         </button>
       </div>
     </form>
