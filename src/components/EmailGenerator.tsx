@@ -104,6 +104,8 @@ export function EmailGenerator({
         }?subject=${newSubjectLine}&body=${encodeURIComponent(newBody)}`,
         "_blank"
       );
+    } else {
+      alert("Make sure there is a column named Email");
     }
   }
 
