@@ -6,3 +6,7 @@
 - Home Page to provide instructions and guide for usage
 
 *** Requires Browser to have default email handler ***
+
+# Where to use
+
+https://originalpandaz.github.io/EmailFaster/
