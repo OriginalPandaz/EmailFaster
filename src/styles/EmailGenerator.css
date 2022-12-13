@@ -1,0 +1,70 @@
+.form-data {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  gap: 1.5rem;
+}
+
+.email-header {
+  margin: 0;
+}
+
+.email-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.create-template-btn,
+.prev-btn,
+.next-btn,
+.send-btn {
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.create-template-btn {
+  background-color: #007bff;
+}
+
+.input-file {
+  width: 80%;
+}
+
+.select-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.template-delete-btn {
+  background-color: red;
+  color: #fff;
+}
+
+.template-update-btn,
+.send-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.template-opts {
+  width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-template-btn,
+  .prev-btn,
+  .send-btn,
+  .next-btn {
+    font-size: 1rem;
+  }
+
+  .input-file {
+    width: 100%;
+  }
+
+  .email-btns {
+    display: grid;
+  }
+}
