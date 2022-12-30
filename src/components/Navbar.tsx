@@ -6,7 +6,6 @@ import { useState } from "react";
 export default function Navbar() {
   const className = "active-link";
   const [clicked, setClicked] = useState(false);
-  console.log(clicked);
   return (
     <div className={clicked ? "topnav-resp" : "topnav"}>
       <NavLink
