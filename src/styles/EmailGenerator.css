@@ -67,4 +67,8 @@
   .email-btns {
     display: grid;
   }
+
+  .recipients {
+    text-align: center;
+  }
 }
