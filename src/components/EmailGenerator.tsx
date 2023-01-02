@@ -177,10 +177,10 @@ export function EmailGenerator({
           </button>
         </div>
         <div
-          className="recipients"
+          className="row-counter"
           style={{ display: hasExcelData ? "none" : "inline" }}
         >
-          Recipient: {index} / {excelData.length - 1}
+          Row: {index} / {excelData.length - 1}
         </div>
         <label htmlFor="input-file">Insert Excel File</label>
         <input

@@ -68,7 +68,7 @@
     display: grid;
   }
 
-  .recipients {
+  .row-counter {
     text-align: center;
   }
 }
