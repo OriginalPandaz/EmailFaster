@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Template } from "../App";
 import "../styles/EmailGenerator.css";
@@ -98,25 +98,41 @@ export function EmailGenerator({
     }
 
     if (emailIndex != -1) {
-      window.open(
-        `mailto:${
-          excelData[index][emailIndex]
-        }?subject=${newSubjectLine}&body=${encodeURIComponent(newBody)}`,
-        "_blank"
-      );
+      if (excelData[index][emailIndex] == null) {
+        alert(`Email not found for recipient number ${index}!`);
+      } else {
+        window.open(
+          `mailto:${
+            excelData[index][emailIndex]
+          }?subject=${newSubjectLine}&body=${encodeURIComponent(newBody)}`,
+          "_blank"
+        );
+      }
     } else {
       alert("Make sure there is a column named Email");
     }
   }
 
+  function handleTemplateDeletionConfirmation() {
+    var confirmation;
+    if (confirm("Are you sure?") == true) {
+      confirmation = true;
+    } else {
+      confirmation = false;
+    }
+    return confirmation;
+  }
+
   function handleTemplateDeletion() {
-    let currTemplateIndex: number = templates.findIndex(
-      (template) => template.id == templateKey
-    );
-    onTemplateRemoval(currTemplateIndex);
-    setTemplateButtons(false);
-    bodyValue.current!.value = "";
-    subjectLineRef.current!.value = "";
+    if (handleTemplateDeletionConfirmation()) {
+      let currTemplateIndex: number = templates.findIndex(
+        (template) => template.id == templateKey
+      );
+      onTemplateRemoval(currTemplateIndex);
+      setTemplateButtons(false);
+      bodyValue.current!.value = "";
+      subjectLineRef.current!.value = "";
+    }
   }
 
   function handleTemplateUpdate() {
@@ -129,6 +145,7 @@ export function EmailGenerator({
     currTemplate!.body = bodyValue.current!.value;
     currTemplate!.subject = subjectLineRef.current!.value;
     onTemplateUpdate(currTemplate!, currTemplateIndex);
+    alert(`${currTemplate?.title} was updated!`);
   }
 
   return (

@@ -23,6 +23,7 @@ function App() {
   );
 
   function onCreateTemplate(data: Template) {
+    alert("Template Created");
     setTemplates((prevTemplates) => {
       return [...prevTemplates, data];
     });
